@@ -58,6 +58,10 @@
       <Project>{DA2D46C7-41CA-48DF-8ACB-E7F953B8E532}</Project>
       <Name>NzProducts.Business</Name>
     </ProjectReference>
+    <ProjectReference Include="..\RefactorMe.DontRefactor\NzProducts.DataAccess.csproj">
+      <Project>{C487CDCA-8441-4E18-96B8-21CA60F766E0}</Project>
+      <Name>NzProducts.DataAccess</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

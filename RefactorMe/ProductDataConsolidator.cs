@@ -5,11 +5,19 @@ using System.Collections.Generic;
 using NzProducts.Configuration.Management;
 using Autofac;
 using log4net;
-
+using System;
 
 namespace RefactorMe
 {
-    public class ProductDataConsolidator 
+    class Program
+    {
+        public static void Main(string[] args)
+        {
+            ProductDataConsolidator pdc = new ProductDataConsolidator();
+            pdc.Get().ForEach(c => Console.WriteLine($"ID - {c.Id} , Name - {c.Name} , Type - {c.Type} Price -{c.Price}"));
+        }
+    }
+    public class ProductDataConsolidator
     {
         private readonly IBzProduct _bzProduct;
         private readonly ILog _log = Logger.GetLogger("NzProduct");
@@ -18,17 +26,17 @@ namespace RefactorMe
             var container = IoCHelper.BuildContainer(GetType(), _log);
             _bzProduct = container.Resolve<IBzProduct>();
         }
-        public  List<Product> Get()
+        public List<Product> Get()
         {
             return _bzProduct.Get();
         }
 
-        public  List<Product> GetInUsDollars()
+        public List<Product> GetInUsDollars()
         {
             return _bzProduct.ProductsInEuros();
         }
 
-        public  List<Product> GetInEuros()
+        public List<Product> GetInEuros()
         {
             return _bzProduct.ProductsInEuros();
         }
