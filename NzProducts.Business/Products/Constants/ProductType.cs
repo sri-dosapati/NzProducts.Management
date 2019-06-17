@@ -6,7 +6,7 @@ namespace NzProducts.Business.Products.Constants
     {
         [Description("T-Shirt")]
         TShirt,
-        [Description("Lawnmower")]
+        [Description("LawnMower")]
         Lawnmower,
         [Description("Phone Case")]
         PhoneCase

@@ -44,7 +44,9 @@
     <Compile Include="Products\BzProduct.cs" />
     <Compile Include="Products\Constants\ProductType.cs" />
     <Compile Include="Products\Interfaces\IBzProduct.cs" />
-    <Compile Include="Products\Mappers\ProductMapper.cs" />
+    <Compile Include="Products\Mappers\LawnMowerMapper.cs" />
+    <Compile Include="Products\Mappers\PhoneCaseMapper.cs" />
+    <Compile Include="Products\Mappers\ShirtMapper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -6,6 +6,6 @@ namespace RefactorMe.DontRefactor.Models
     {
         public IEnumerable<TShirt>  Shirts { get; set; }
         public IEnumerable<PhoneCase> PhoneCases { get; set; }
-        public IEnumerable<Lawnmower> Lawnmowers { get; set; }
+        public IEnumerable<Lawnmower> LawnMowers { get; set; }
     }
 }

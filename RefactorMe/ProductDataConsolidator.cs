@@ -5,26 +5,27 @@ using System.Collections.Generic;
 using NzProducts.Configuration.Management;
 using Autofac;
 using log4net;
-using System;
+using RefactorMe.DontRefactor.Data;
+using NzProducts.Common.Contracts;
 
 namespace RefactorMe
 {
-    class Program
-    {
-        public static void Main(string[] args)
-        {
-            ProductDataConsolidator pdc = new ProductDataConsolidator();
-            pdc.Get().ForEach(c => Console.WriteLine($"ID - {c.Id} , Name - {c.Name} , Type - {c.Type} Price -{c.Price}"));
-        }
-    }
     public class ProductDataConsolidator
     {
         private readonly IBzProduct _bzProduct;
         private readonly ILog _log = Logger.GetLogger("NzProduct");
+
         public ProductDataConsolidator()
         {
             var container = IoCHelper.BuildContainer(GetType(), _log);
+             container.Resolve<IReadOnlyRepository<TShirt>>();
+             container.Resolve<IReadOnlyRepository<Lawnmower>>();
+             container.Resolve<IReadOnlyRepository<PhoneCase>>();
+             container.Resolve<IMapper<TShirt, Product>>();
+             container.Resolve<IMapper<Lawnmower, Product>>();
+             container.Resolve<IMapper<PhoneCase, Product>>();
             _bzProduct = container.Resolve<IBzProduct>();
+            
         }
         public List<Product> Get()
         {
@@ -33,7 +34,7 @@ namespace RefactorMe
 
         public List<Product> GetInUsDollars()
         {
-            return _bzProduct.ProductsInEuros();
+            return _bzProduct.ProductsInUsDollars();
         }
 
         public List<Product> GetInEuros()

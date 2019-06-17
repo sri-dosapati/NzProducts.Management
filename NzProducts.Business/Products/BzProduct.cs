@@ -13,22 +13,21 @@ namespace NzProducts.Business.Products
         private static IReadOnlyRepository<TShirt> _tShirtOnlyRepository;
         private static IReadOnlyRepository<Lawnmower> _lawnOnlyRepository;
         private static IReadOnlyRepository<PhoneCase> _phoneCaseOnlyRepository;
-        private static IMapper<TShirt, Product> _tShirtMapper;
+        IMapper<TShirt, Product> _tShirtMapper;
         private readonly IMapper<PhoneCase, Product> _phoneCaseMapper;
         private readonly IMapper<Lawnmower, Product> _lawnMoverMapper;
 
         public BzProduct(IReadOnlyRepository<TShirt> tShirtOnlyRepository
             , IReadOnlyRepository<Lawnmower> lawnOnlyRepository
-            , IReadOnlyRepository<PhoneCase> phoneCaseOnlyRepository,
-            IMapper<TShirt, Product> tTShirtMapper,
-            IMapper<PhoneCase, Product> phoneCaseMapper,
-            IMapper<Lawnmower, Product> lawnMoverMapper)
-
+            , IReadOnlyRepository<PhoneCase> phoneCaseOnlyRepository
+            , IMapper<TShirt, Product> tShirtMapper
+            , IMapper<PhoneCase, Product> phoneCaseMapper
+            , IMapper<Lawnmower, Product> lawnMoverMapper)
         {
             _tShirtOnlyRepository = tShirtOnlyRepository;
             _lawnOnlyRepository = lawnOnlyRepository;
             _phoneCaseOnlyRepository = phoneCaseOnlyRepository;
-            _tShirtMapper = tTShirtMapper;
+            _tShirtMapper = tShirtMapper;
             _phoneCaseMapper = phoneCaseMapper;
             _lawnMoverMapper = lawnMoverMapper;
         }
@@ -55,10 +54,10 @@ namespace NzProducts.Business.Products
             var ps = new List<Product>();
 
             var nzItems = ExtractAllItems();
-            
+
             var tShirtProducts = nzItems.Shirts.Select(t => _tShirtMapper.Map(t));
             var phoneCasesProducts = nzItems.PhoneCases.Select(p => _phoneCaseMapper.Map(p));
-            var lawnMowerProducts = nzItems.Lawnmowers.Select(c => _lawnMoverMapper.Map(c));
+            var lawnMowerProducts = nzItems.LawnMowers.Select(c => _lawnMoverMapper.Map(c));
 
             ps.AddRange(AddProductType(tShirtProducts, ProductType.TShirt));
             ps.AddRange(AddProductType(phoneCasesProducts, ProductType.PhoneCase));
@@ -89,7 +88,7 @@ namespace NzProducts.Business.Products
             {
                 Shirts = _tShirtOnlyRepository.GetAll(),
                 PhoneCases = _phoneCaseOnlyRepository.GetAll(),
-                Lawnmowers = _lawnOnlyRepository.GetAll()
+                LawnMowers = _lawnOnlyRepository.GetAll()
             };
             return nzProducts;
         }

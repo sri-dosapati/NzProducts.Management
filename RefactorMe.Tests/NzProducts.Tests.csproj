@@ -87,9 +87,18 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
+    <Compile Include="UnitTests\NZProductsTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\NzProducts.Business\NzProducts.Business.csproj">
+      <Project>{DA2D46C7-41CA-48DF-8ACB-E7F953B8E532}</Project>
+      <Name>NzProducts.Business</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\NzProducts.Common.Contracts\NzProducts.Common.Contracts.csproj">
+      <Project>{9A6A64EB-A617-4A70-BB2E-9FCCDCFE9A29}</Project>
+      <Name>NzProducts.Common.Contracts</Name>
+    </ProjectReference>
     <ProjectReference Include="..\RefactorMe.DontRefactor\NzProducts.DataAccess.csproj">
       <Project>{c487cdca-8441-4e18-96b8-21ca60f766e0}</Project>
       <Name>NzProducts.DataAccess</Name>

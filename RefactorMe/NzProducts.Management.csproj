@@ -5,7 +5,7 @@
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{817309D3-28E8-4E0A-9D80-9DD1ED672E62}</ProjectGuid>
-    <OutputType>Exe</OutputType>
+    <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>RefactorMe</RootNamespace>
     <AssemblyName>RefactorMe</AssemblyName>
@@ -58,6 +58,10 @@
     <ProjectReference Include="..\NzProducts.Business\NzProducts.Business.csproj">
       <Project>{DA2D46C7-41CA-48DF-8ACB-E7F953B8E532}</Project>
       <Name>NzProducts.Business</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\NzProducts.Common.Contracts\NzProducts.Common.Contracts.csproj">
+      <Project>{9A6A64EB-A617-4A70-BB2E-9FCCDCFE9A29}</Project>
+      <Name>NzProducts.Common.Contracts</Name>
     </ProjectReference>
     <ProjectReference Include="..\NzProducts.Configuration.Management\NzProducts.Configuration.Management.csproj">
       <Project>{5bb20c50-435b-44a2-9787-80093086b882}</Project>
